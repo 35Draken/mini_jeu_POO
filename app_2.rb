@@ -48,6 +48,7 @@ def menu
     puts "0 - #{@airbus.show_state}"
     puts "1 - #{@boeing.show_state}"
     puts "------------------------------------"
+    while @maverick.life > 0
     input = gets.chomp
     case input
     when "a"
@@ -61,6 +62,7 @@ def menu
     else
         puts " APPRENDS A LIRE ZOZO"
     end
+end
 end
 menu
 
