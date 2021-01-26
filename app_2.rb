@@ -49,7 +49,7 @@ def menu
     puts "1 - #{@boeing.show_state}"
     puts "------------------------------------"
     input = gets.chomp
-    case
+    case input
     when "a"
         @maverick.search_weapon
     when "s"
