@@ -27,17 +27,7 @@ def bots
 
 end
 #-----------Combat
-=begin
-def attack
-    while @airbus.life > 0 && @boeing.life > 0 && @maverick.life > 0
-        @maverick.attacks(@airbus && @boeing)
-        if (@airbus.life <= 0 || @boeing.life <= 0) && @maverick.life > 0
-            break
-        end
 
-    end
-end
-=end
 
 def menu
     start
