@@ -5,16 +5,16 @@ Bundler.require
 class Player
   attr_accessor :name
   attr_accessor :life
-  @@all_player = Array.new
+  @@enemies = Array.new
 
   def initialize(name)
     @name = name
     @life = 10
-    @@all_player << self
+    @@enemies << self
   end
 
   def self.all
-    return @@all_player
+    return @@enemies
   end
 
   def show_state
@@ -90,4 +90,6 @@ class HumanPlayer < Player
         @life += 80
       end
       puts "Waow, tu as trouvé un pack de +80 points de vie !"
+    end
+  end
 end
