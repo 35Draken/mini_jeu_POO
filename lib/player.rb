@@ -43,13 +43,11 @@ class HumanPlayer < Player
   attr_accessor :weapon_level
   attr_accessor :name
   attr_accessor :life
-  @@all_player = Array.new
 
   def initialize(name)
     super(name)
     @weapon_level = 1
     @life = 100
-    @@all_player << self
   end
 
   def show_state
