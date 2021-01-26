@@ -18,9 +18,9 @@ def init_player
     @maverick = HumanPlayer.new("#{gets.chomp}")
 end
 #-----------Enemies
-def enemies
+def bots
     @airbus = Player.new("AirbusA380")
-    @boeing = Player.new("@boeing737Max")
+    @boeing = Player.new("Boeing737Max")
 end
 #-----------Combat
 def attack
@@ -29,15 +29,15 @@ def attack
         if (@airbus.life <= 0 || @boeing.life <= 0) && @maverick.life > 0
             break
         end
-    #    @boeing.attacks(maverick)
-    #   @airbus.attacks(maverick)
+
     end
 end
 
 def menu
     start
     init_player
-    enemies
+    bots
+    @@enemies = Array.new
     puts "Quelle action souhaite tu effectuer?"
     puts "------------------------------------"
     puts "a - chercher une meilleure arme"
@@ -57,16 +57,24 @@ def menu
         case input
         when "a"
             @maverick.search_weapon
-            @airbus.attacks(@maverick)
+            @@enemies.each do |pnj| 
+                pnj.attacks(@maverick)
+            end
         when "s"
             @maverick.search_health_pack
-            @boeing.attacks(@maverick)
+            @@enemies.each do |pnj| 
+                pnj.attacks(@maverick)
+            end
         when "0"
             @maverick.attacks(@airbus)
-            @airbus.attacks(@maverick)
+            @@enemies.each do |pnj| 
+                pnj.attacks(@maverick)
+            end
         when "1"
             @maverick.attacks(@boeing)
-            @boeing.attacks(@maverick)
+            @@enemies.each do |pnj| 
+                pnj.attacks(@maverick)
+            end
         else
             puts " APPRENDS A LIRE ZOZO"
         end

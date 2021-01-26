@@ -5,7 +5,7 @@ Bundler.require
 class Player
   attr_accessor :name
   attr_accessor :life
-  @@enemies = Array.new
+  @@enemies = []
 
   def initialize(name)
     @name = name
