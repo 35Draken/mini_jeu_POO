@@ -40,9 +40,7 @@ class Player
 end
 
 class HumanPlayer < Player
-  attr_accessor :weapon_level
-  attr_accessor :name
-  attr_accessor :life
+  attr_accessor :weapon_level, :life
 
   def initialize(name)
     super(name)
