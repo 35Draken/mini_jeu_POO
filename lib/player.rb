@@ -75,7 +75,7 @@ class HumanPlayer < Player
     health_pack = rand(1..6)
     case health_pack
     when 1
-      "Tu n'as rien trouvé... ".
+      puts "Tu n'as rien trouvé... "
     when 2..5
       puts "Bravo, tu as trouvé un pack de +50 points de vie !"
       if @life + 50 > 100 

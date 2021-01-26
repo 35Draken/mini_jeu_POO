@@ -26,7 +26,7 @@ end
 def attack
     while @airbus.life > 0 && @boeing.life > 0 && @maverick.life > 0
         @maverick.attacks(@airbus && @boeing)
-        if@airbus.life <= 0 || @boeing.life <= 0 || @maverick.life > 0
+        if (@airbus.life <= 0 || @boeing.life <= 0) && @maverick.life > 0
             break
         end
     #    @boeing.attacks(maverick)
@@ -48,21 +48,35 @@ def menu
     puts "0 - #{@airbus.show_state}"
     puts "1 - #{@boeing.show_state}"
     puts "------------------------------------"
-    while @maverick.life > 0
-    input = gets.chomp
-    case input
-    when "a"
-        @maverick.search_weapon
-    when "s"
-        @maverick.search_health_pack
-    when "0"
-        @maverick.attacks(@airbus)
-    when "1"
-        @maverick.attacks(@boeing)
-    else
-        puts " APPRENDS A LIRE ZOZO"
+
+    while @maverick.life > 0 || (@airbus.life > 0 && @boeing.life > 0)
+        input = gets.chomp
+        if (@airbus.life <= 0 || @boeing.life <= 0)|| @maverick.life <= 0
+            break
+        end
+        case input
+        when "a"
+            @maverick.search_weapon
+            @airbus.attacks(@maverick)
+        when "s"
+            @maverick.search_health_pack
+            @boeing.attacks(@maverick)
+        when "0"
+            @maverick.attacks(@airbus)
+            @airbus.attacks(@maverick)
+        when "1"
+            @maverick.attacks(@boeing)
+            @boeing.attacks(@maverick)
+        else
+            puts " APPRENDS A LIRE ZOZO"
+        end
     end
-end
+    puts "La partie est fini !"
+    if @maverick.life > 0
+        puts "Bravo, tu as gagné"
+    else
+        puts "Looser ! Tu as perdu !"
+    end
 end
 menu
 
